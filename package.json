@@ -1,16 +1,17 @@
 {
 	"name": "color-eyedropper",
 	"productName": "color-eyedropper",
-	"version": "1.0.0",
-	"description": "My Electron application description",
+	"version": "0.0.1",
+	"description": "a simple cross-platform color eyedropper",
 	"main": "dist/index.js",
 	"scripts": {
 		"build": "tsc",
-		"start": "electron-forge start",
+		"pack": "tsc && electron-builder --dir",
+		"dist": "tsc && electron-builder",
+		"postinstall": "electron-builder install-app-deps",
 		"package": "electron-forge package",
 		"make": "electron-forge make",
-		"publish": "electron-forge publish",
-		"lint": "echo \"No linting configured\""
+		"publish": "electron-forge publish"
 	},
 	"keywords": [],
 	"author": {
@@ -29,6 +30,7 @@
 		"@electron-forge/maker-squirrel": "^6.0.5",
 		"@electron-forge/maker-zip": "^6.0.5",
 		"electron": "23.1.1",
-		"electron-builder": "^23.6.0"
+		"electron-builder": "^23.6.0",
+		"typescript": "^4.9.5"
 	}
 }

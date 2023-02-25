@@ -1,4 +1,4 @@
-import { app, BrowserWindow, clipboard, ipcMain, Tray } from 'electron';
+import { app, BrowserWindow, clipboard, ipcMain, Menu, Tray } from 'electron';
 import robot from "robotjs"
 import path from 'path';
 
@@ -14,6 +14,7 @@ let mainWindow: BrowserWindow
 const createWindow = () => {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
+		icon: path.join(__dirname, "../public", 'icon.png'),
 		fullscreen: true,
 		minHeight: 100,
 		frame: false,
@@ -40,6 +41,16 @@ const createWindow = () => {
 app.on('ready', () => {
 	// launch app to system tray
 	tray = new Tray(path.join(__dirname, "../public", 'icon.png'))
+	// create a menu with an exit option for system tray
+	const contextMenu = Menu.buildFromTemplate([
+		{
+			label: 'Exit',
+			click: () => {
+				app.quit()
+			},
+		},
+	])
+	tray.setContextMenu(contextMenu)
 	tray.setToolTip('Choose a color')
 	tray.on("click", () => {
 		createWindow()
