@@ -2,6 +2,41 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
   margin: auto;
-  max-width: 38rem;
-  padding: 2rem;
+	cursor: crosshair;
+}
+
+
+#color-div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translate(-110%, -100%);
+	background: white;
+	z-index: 10000;
+	pointer-events: none;
+	color: black;
+	padding: 5px 18px;
+	border-radius: 5px;
+}
+#color {
+	height: 40px;
+	width: 40px;
+	background: transparent;
+}
+#hex-span {
+	letter-spacing: .1rem;
+	text-transform: uppercase;
+}
+html,	body {
+	width: 100vw;
+	max-width: 100vw;
+	min-height: 100vh;
+	background: transparent;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
 }

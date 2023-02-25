@@ -4,5 +4,6 @@ import { contextBridge, ipcRenderer } from 'electron'
 
 contextBridge.exposeInMainWorld('electronAPI', {
 	close: () => ipcRenderer.send('close'),
-	getScreenshot: (callback: () => void) => ipcRenderer.on("screenshot", callback)
+	sendMousePos: (x: number, y: number) => ipcRenderer.invoke("sendMousePos", x, y),
+	copyToClipboard: (text: string) => ipcRenderer.send("copyToClipboard", text),
 })

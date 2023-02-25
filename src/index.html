@@ -6,43 +6,12 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-		<img style="width: 100%;" src="" alt=""/>
 		<div id="color-div">
+				<div id="color"></div>
 				<span id="hex-span"></span>
-			<div id="color"></div>
 		</div>
-
   </body>
 <style>
-	#color-div {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 5px;
-		position: absolute;
-		padding: 5px;
-		top: 0;
-		left: 0;
-		transform: translate(-100%, -50%);
-		color: white;
-		z-index: 10000;
-		border: 1px solid white;
-		pointer-events: none;
-	}
-	#color {
-		height: 20px;
-		width: 20px;
-		border-radius: 50%;
-	}
-	html,	body {
-		width: 100vw;
-		max-width: 100vw;
-		min-height: 100vh;
-		background: transparent;
-		overflow: hidden;
-		padding: 0;
-		margin: 0;
-	}
 </style>
 <script src="./renderer.js"></script>
 </html>

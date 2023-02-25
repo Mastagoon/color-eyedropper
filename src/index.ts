@@ -1,4 +1,5 @@
-import { app, BrowserWindow, desktopCapturer, ipcMain, Tray } from 'electron';
+import { app, BrowserWindow, clipboard, ipcMain, Tray } from 'electron';
+import robot from "robotjs"
 import path from 'path';
 
 let tray: null | Tray = null
@@ -30,37 +31,34 @@ const createWindow = () => {
 	mainWindow.loadFile(path.join(__dirname, "../src", 'index.html'));
 
 	// Open the DevTools.
-	mainWindow.webContents.openDevTools();
+	// mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', () => setTimeout(() => {
+app.on('ready', () => {
 	// launch app to system tray
 	tray = new Tray(path.join(__dirname, "../public", 'icon.png'))
 	tray.setToolTip('Choose a color')
-	tray.on("click", async () => {
-		const sources = await desktopCapturer.getSources({ types: ['screen'], thumbnailSize: { width: 1920, height: 1080 } })
-		const screen = sources[0]
-		setTimeout(async () => {
-			createWindow()
-			setTimeout(() => {
-				mainWindow.webContents.send("screenshot", screen.thumbnail.toDataURL())
-			}, 1000)
-			console.log("SENT THE THING")
-		}, 1)
+	tray.on("click", () => {
+		createWindow()
 	})
 
-	ipcMain.handle("getPixelColor", () => {
-		// const pixel = robot
+	ipcMain.on("copyToClipboard", (_, hex) => {
+		clipboard.writeText(hex)
+		mainWindow.hide()
 	})
 
 	ipcMain.on("close", () => {
-		console.log("GOTTIT")
 		mainWindow.hide()
 	})
-}, 500));
+
+	ipcMain.handle("sendMousePos", (_, x, y) => {
+		const hex = "#" + robot.getPixelColor(x, y)
+		return hex
+	})
+});
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
