@@ -8,9 +8,9 @@ To build, make sure you have nodeJS installed.
 simply install dependancies, transpile to typescript, and use electron forge to create the build.
 
 ```
-	npm install # install dependancies
-	npm run build # transpile typescript
-	npm run make # build
+npm install # install dependancies
+npm run build # transpile typescript
+npm run make # build
 ```
 
 ### Screenshots
