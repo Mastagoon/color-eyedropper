@@ -1,6 +1,6 @@
 ### Color Eyedropper
 
-A simple cross-platform eyedropper tool build using electron.
+A simple cross-platform eyedropper tool build using electron and robotjs.
 
 ### Building
 
