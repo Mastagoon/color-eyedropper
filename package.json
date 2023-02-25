@@ -1,10 +1,11 @@
 {
-	"name": "electron-overlay",
-	"productName": "electron-overlay",
+	"name": "color-eyedropper",
+	"productName": "color-eyedropper",
 	"version": "1.0.0",
 	"description": "My Electron application description",
 	"main": "dist/index.js",
 	"scripts": {
+		"build": "tsc",
 		"start": "electron-forge start",
 		"package": "electron-forge package",
 		"make": "electron-forge make",
@@ -27,6 +28,7 @@
 		"@electron-forge/maker-rpm": "^6.0.5",
 		"@electron-forge/maker-squirrel": "^6.0.5",
 		"@electron-forge/maker-zip": "^6.0.5",
-		"electron": "23.1.1"
+		"electron": "23.1.1",
+		"electron-builder": "^23.6.0"
 	}
 }
