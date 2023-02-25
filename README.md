@@ -15,3 +15,7 @@ npm run make # build
 
 ### Screenshots
 ![alt text](https://github.com/mastagoon/color-eyedropper/blob/master/screenshots/sc1.png?raw=true)
+
+### TODO
+[ ] Keyboard shortcut
+[ ] Github actions
